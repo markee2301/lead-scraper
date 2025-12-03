@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Next.js Deployment Guide (Vercel)
 
-## Getting Started
+This guide explains how to deploy this Next.js project to **Vercel**, including configuration of the required environment variable: `N8N_WEBHOOK_URL`.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 1. Prerequisites
+
+Before deploying, ensure you have:
+
+- A GitHub account  
+- A Vercel account (https://vercel.com)  
+- This repository cloned or forked
+
+## 2. Deploying to Vercel
+
+### Step 1 — Import the Repository
+
+1. Open: https://vercel.com/dashboard  
+2. Click **Add New… → Project**  
+3. Select your GitHub repo:
+
+```
+markee2301/lead-scraper
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Vercel will auto-detect Next.js.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 3. Environment Variables
 
-## Learn More
+You must configure one environment variable for the app to work.
 
-To learn more about Next.js, take a look at the following resources:
+1. Go to your Vercel dashboard  
+2. Navigate to: **Settings → Environment Variables**  
+3. Add:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Name               | Value                    |
+|-------------------|---------------------------|
+| `N8N_WEBHOOK_URL` | your N8N webhook URL here |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Example:
 
-## Deploy on Vercel
+```
+Name: N8N_WEBHOOK_URL
+Value: https://n8n.example.com/webhook/abc123
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Click **Save** after adding.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 4. Deploy
+
+Once the environment variable is set:
+
+1. Go to **Deployments**
+2. Vercel will start building automatically  
+3. After completing, you will get a live URL such as:
+
+```
+https://lead-scraper.vercel.app
+```
+
+---
+
+## 5. Redeploying After ENV Changes
+
+If you update environment variables:
+
+1. Open the **Deployments** tab  
+2. Click **Redeploy** on the latest build  
+3. Choose **Use existing build cache** (recommended)
+
+Vercel will rebuild using the updated value.
